@@ -4,5 +4,5 @@ import	"fmt"
 
 
 func main(){
-	fmt.Println("test of github action")
+	fmt.Println("test of github action, part II")
 }
