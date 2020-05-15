@@ -7,10 +7,16 @@ jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: pull-request
+      - name: One
+        - uses: actions/checkout@v1
+        - run: npm ci
+        - uses: nelonoel/branch-name@v1
+        # Use branch name for whatever purpose
+        - run: echo ${BRANCH_NAME}
+          -
+     - name: Two
         uses: repo-sync/pull-request@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ BRANCH_NAME} }}
           pr_title: "Pulling ${{ github.event.pull_request.head.ref }} into master"
           pr_draft: true
