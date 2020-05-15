@@ -25,6 +25,6 @@ jobs:
       - name: Two
         uses: repo-sync/pull-request@v2
         with:
-          pr_title: "Pulling ${{BASE_BRANCH }} into master"
+          pr_title: "Pulling ${{env.BASE_BRANCH }} into master"
           pr_draft: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
