@@ -21,3 +21,4 @@ jobs:
         with:
           pr_title: "Pulling ${{steps.vars.outputs.short_ref }} into master"
           pr_draft: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
