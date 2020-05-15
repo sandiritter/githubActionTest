@@ -19,5 +19,5 @@ jobs:
       - name: Two
         uses: repo-sync/pull-request@v2
         with:
-          pr_title: "Pulling ${{steps.vars.outputs.short_ref } into master"
+          pr_title: "Pulling ${{steps.vars.outputs.short_ref }} into master"
           pr_draft: true
