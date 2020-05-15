@@ -1,24 +1,30 @@
 name: prBuild
 on:
-  push:
-    branches:
-      - stage
+  pull_request:
+    types: [closed]
 jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-      - name: One
-        - uses: actions/checkout@v2
-        - run: npm ci
-        - uses: nelonoel/branch-name@v1
-        # Use branch name for whatever purpose
-        - run: echo ${BRANCH_NAME}
-          -
-     - name: Two
       - uses: actions/checkout@v2
-      - name: pull-request
+
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: Step that prints name of pull request's base branch
+        run: |
+          echo "Pull request's base branch is: ${BASE_BRANCH}"
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        if: github.event_name == 'pull_request'
+
+      - name: Check output
+        run: echo ${{ steps.vars.outputs.short_ref }}
+
+      - name: Two
         uses: repo-sync/pull-request@v2
         with:
-          github_token: ${{ BRANCH_NAME} }}
-          pr_title: "Pulling ${{ github.event.pull_request.head.ref }} into master"
+          pr_title: "Pulling ${{BASE_BRANCH }} into master"
           pr_draft: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
