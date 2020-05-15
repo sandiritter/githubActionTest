@@ -2,7 +2,7 @@ name: prBuild
 on:
   push:
     branches:
-      - qa
+      - stage
 jobs:
   pull-request:
     runs-on: ubuntu-latest
@@ -12,5 +12,5 @@ jobs:
         uses: repo-sync/pull-request@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_title: "Pulling ${{ github.ref }} into stage"
+          pr_title: "Pulling ${{ github.ref }} into master"
           pr_draft: true
