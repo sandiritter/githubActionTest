@@ -12,12 +12,19 @@ jobs:
         id: vars
         run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
+      - name: Step that prints name of pull request's base branch
+        run: |
+          echo "Pull request's base branch is: ${BASE_BRANCH}"
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        if: github.event_name == 'pull_request'
+
       - name: Check output
         run: echo ${{ steps.vars.outputs.short_ref }}
 
       - name: Two
         uses: repo-sync/pull-request@v2
         with:
-          pr_title: "Pulling ${{steps.vars.outputs.short_ref }} into master"
+          pr_title: "Pulling ${{BASE_BRANCH }} into master"
           pr_draft: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
