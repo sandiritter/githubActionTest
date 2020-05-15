@@ -1,8 +1,7 @@
 name: prBuild
 on:
-  push:
-    branches:
-      - stage
+  pull_request:
+    types: [closed]
 jobs:
   pull-request:
     runs-on: ubuntu-latest
