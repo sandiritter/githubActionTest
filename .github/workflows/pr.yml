@@ -7,16 +7,14 @@ jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-      - name: One
-        - uses: actions/checkout@v1
-        - run: npm ci
-        - uses: nelonoel/branch-name@v1
-        # Use branch name for whatever purpose
-        - run: echo ${BRANCH_NAME}
-          -
+      - name: Extract branch name
+          shell: bash
+          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          id: extract_branch
+
      - name: Two
         uses: repo-sync/pull-request@v2
         with:
           github_token: ${{ BRANCH_NAME} }}
-          pr_title: "Pulling ${{ github.event.pull_request.head.ref }} into master"
+          pr_title: "Pulling ${{steps.extract_branch.outputs.branch}} into master"
           pr_draft: true
