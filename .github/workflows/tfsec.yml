@@ -1,8 +1,8 @@
 name: tfsec
-on: [push]
-  branches-ignore:
-    - stage
-    - master
+on:
+  push:
+    branches:
+      - '!master'
 jobs:
   tfsec:
     name: TF Security Check
