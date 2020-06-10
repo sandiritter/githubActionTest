@@ -1,7 +1,7 @@
 name: tfsec
 on:
   push:
-    branches-igonre:
+    branches-ignore:
       - 'master'
 jobs:
   tfsec:
