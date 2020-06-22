@@ -23,7 +23,14 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
-      - name: Checkout
+      - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: pr
-        uses: pgalchemy/one-commit-pr-action@master
+      # checkout the private repo containing the action to run
+      - name: Checkout GitHub Action Repo
+        uses: actions/checkout@v2
+        with:
+          repository: pgalchemy/one-commit-pr-action@master
+          token: ${{ secrets.GITHUB_TOKEN }} 
+          path: .github/actions/my-action
+      - name: Run My Action
+        uses: ./.github/actions/my-action
