@@ -24,6 +24,5 @@ jobs:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
       - name: pr
-          uses: pgalchemy/one-commit-pr-action@master
+        uses: pgalchemy/one-commit-pr-action@master
 
-        
