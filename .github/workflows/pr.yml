@@ -23,5 +23,7 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: pr
         uses: pgalchemy/one-commit-pr-action@master
