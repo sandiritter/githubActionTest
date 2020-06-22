@@ -23,7 +23,6 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
-      # checkout this repo
       - name: Checkout Repo
         uses: actions/checkout@v2
       # checkout the private repo containing the action to run
@@ -35,4 +34,3 @@ jobs:
           path: .github/actions/my-action
       - name: Run My Action
         uses: ./.github/actions/my-action
-
