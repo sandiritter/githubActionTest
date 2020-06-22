@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: pgalchemy/one-commit-pr-action
-          token: ${{ secrets.GITHUB_TOKEN }} 
+#          token: ${{ secrets.GITHUB_TOKEN }}
           path: .github/actions/my-action
       - name: Run My Action
         uses: ./.github/actions/my-action
