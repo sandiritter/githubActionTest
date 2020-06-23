@@ -3,6 +3,7 @@ on:
   push:
     branches-ignore:
       - 'master'
+      - 'stage'
 jobs:
   tfsec:
     name: TF Security Check
@@ -16,5 +17,3 @@ jobs:
         with:
           tfsec_actions_working_dir: = ./infrastructure
           tfsec_actions_comment: false
-
-    
