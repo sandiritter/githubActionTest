@@ -1,4 +1,4 @@
-variable test_secret {
+variable test_sec {
   type        = string
   description = "my test secret"
   default     = "N/A"
